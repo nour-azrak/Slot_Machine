@@ -14,6 +14,11 @@
             int[] trackWinningColumn = new int[COLUMNSNUMBER]; // it does not make a difference to use ROWSNUMBER or ROWSNUMBER
             int[] trackWinningDiagonalOne = new int[ROWSNUMBER];  // it does not make a difference to use ROWSNUMBER or ROWSNUMBER
 
+            // bool to check equality of arrays trackWinning...
+            bool rowIsEqual = true;
+            bool colIsEqual = true;
+            bool diagOneIsEqual = true;
+
             // fill with random numbers. Narrow window of max min is used
             // to increase the probability of winning row, column or diagonal.
             const int MAX_RANDOM_NUMBER = 5, MIN_RANDOM_NUMBER = 1;
@@ -30,10 +35,6 @@
             }
             Console.WriteLine();
 
-            // bool to check equality of arrays trackWinning...
-            bool rowIsEqual = true;
-            bool colIsEqual = true;
-            bool diagOneIsEqual = true;
 
             // check if any row has equal numbers
             for(int row = 0; row < ROWSNUMBER; row++)
@@ -87,52 +88,9 @@
                         diagOneIsEqual = false;
                     }
 
-                }
-                
-                
+                }             
                 if (diagOneIsEqual) break;
             }
-
-
-            /*
-            for (int rows = 0; rows < ROWSNUMBER; rows++)
-            {
-                
-                for (int cols = 0; cols < COLUMNSNUMBER; cols++)
-                {
-                    // assign rows, colums and diagonal
-                    trackWinningRow[cols] = slotMachineArray[rows,cols];
-                    trackWinningColumn[cols] = slotMachineArray[cols,rows];
-                    if (rows == cols)
-                    {
-                        trackWinningDiagonal[cols] = slotMachineArray[rows, cols];
-                    }
-
-                    // check equality
-                    if (trackWinningRow[cols] != trackWinningRow[FIRST_ARRAY_POSITION])
-                    {
-                        rowIsEqual = false;
-                    }
-                    if (trackWinningColumn[cols] != trackWinningColumn[FIRST_ARRAY_POSITION])
-                    {  
-                        colIsEqual = false;
-                    }
-                    if(trackWinningDiagonal[cols] != trackWinningDiagonal[FIRST_ARRAY_POSITION])
-                    {
-                        diagIsEqual = false;
-                    }
-
-                    Console.WriteLine($" Position {cols} of trackWinningRow is {trackWinningRow[cols]}");
-                    Console.WriteLine($" Position {cols} of trackWinningCols is {trackWinningColumn[cols]}");
-                    if (cols == rows)
-                    {
-                      Console.WriteLine($" Position {cols} of trackWinningDiag is {trackWinningDiagonal[cols]}");
-                    }
-                    
-                    Console.WriteLine();
-                }
-            
-            }*/
             if (rowIsEqual || colIsEqual || diagOneIsEqual)
             {
                 Console.WriteLine("You Won");
